@@ -1,1 +1,1 @@
-# sigulia_python_training
+# Repository for sigulia_python_training
