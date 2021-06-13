@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+	<title>Untitled Test Suite</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">test_add_training</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost/addressbook/<datalist><option>http://localhost/addressbook/</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>name=user<datalist><option>name=user</option><option>//input[@name='user']</option><option>//form[@id='LoginForm']/input</option><option>//input</option><option>css=input[name="user"]</option></datalist></td><td>admin</td>
+</tr>
+<tr><td>type</td><td>name=pass<datalist><option>name=pass</option><option>//input[@name='pass']</option><option>//form[@id='LoginForm']/input[2]</option><option>//input[2]</option><option>css=input[name="pass"]</option></datalist></td><td>secret</td>
+</tr>
+<tr><td>submit</td><td>id=LoginForm<datalist><option>id=LoginForm</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>link=groups<datalist><option>link=groups</option><option>//a[contains(text(),'groups')]</option><option>//div[@id='nav']/ul/li[3]/a</option><option>//a[contains(@href, 'group.php')]</option><option>//li[3]/a</option><option>css=li.admin &gt; a</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>name=new<datalist><option>name=new</option><option>//input[@name='new']</option><option>//div[@id='content']/form/input</option><option>//div[4]/form/input</option><option>css=input[name="new"]</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>name=group_name<datalist><option>name=group_name</option><option>//input[@name='group_name']</option><option>//div[@id='content']/form/input</option><option>//div[4]/form/input</option><option>css=input[name="group_name"]</option></datalist></td><td>test</td>
+</tr>
+<tr><td>type</td><td>name=group_header<datalist><option>name=group_header</option><option>//textarea[@name='group_header']</option><option>//div[@id='content']/form/textarea</option><option>//textarea</option><option>css=textarea[name="group_header"]</option></datalist></td><td>test</td>
+</tr>
+<tr><td>type</td><td>name=group_footer<datalist><option>name=group_footer</option><option>//textarea[@name='group_footer']</option><option>//div[@id='content']/form/textarea[2]</option><option>//textarea[2]</option><option>css=textarea[name="group_footer"]</option></datalist></td><td>test</td>
+</tr>
+<tr><td>click</td><td>name=submit<datalist><option>name=submit</option><option>//input[@name='submit']</option><option>//div[@id='content']/form/input[2]</option><option>//input[2]</option><option>css=input[name="submit"]</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>link=group page<datalist><option>link=group page</option><option>//a[contains(text(),'group page')]</option><option>//div[@id='content']/div/i/a</option><option>xpath=(//a[contains(@href, 'group.php')])[2]</option><option>//i/a</option><option>css=i &gt; a</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>link=Logout<datalist><option>link=Logout</option><option>//a[contains(text(),'Logout')]</option><option>//a[@onclick='document.logout.submit();']</option><option>//div[@id='top']/form/a</option><option>//a[contains(@href, '#')]</option><option>//a</option><option>css=a</option></datalist></td><td></td>
+</tr>
+</tbody></table>
+</body>
+</html>
