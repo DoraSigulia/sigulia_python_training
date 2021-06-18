@@ -1,10 +1,3 @@
-class Group():
-
-    def __init__(self, name, header, footer):
-        self.name = name
-        self.header = header
-        self.footer = footer
-
 class Contact_details():
     def __init__(self, firstname, middlename, lastname, nickname, title, company, address, phone_number_home,
                         mobile, phone_number_work, email1, email2, bday, bmonth, byear, aday, amonth, ayear, address2,
