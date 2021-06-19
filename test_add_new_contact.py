@@ -9,7 +9,7 @@ def app_cont(request):
     request.addfinalizer(fixture.destroy)
     return fixture
     
-def test_add_new_contact(self):
+def test_add_new_contact(app_cont):
     app_cont.login(username="admin", password="secret")
     app_cont.add_new_contact(Contact_details(firstname="Ivan", middlename="Peter", lastname="Ivanov", nickname="admin911",
                                                title="test", company="OOO \"LM\"", address="Lenina, 1", phone_number_home="2894523",
