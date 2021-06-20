@@ -53,7 +53,7 @@ class ContactHelper:
         wd.find_element_by_xpath("(//input[@value=\"Enter\"])[2]").click()
         self.return_home_page()
 
-    def edit(self, contact):
+    def edit_first(self, contact):
         wd = self.app.wd
         wd.find_element_by_css_selector("img[title=\"Edit\"]").click()
         wd.find_element_by_name("firstname").clear()
