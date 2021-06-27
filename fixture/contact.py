@@ -55,6 +55,7 @@ class ContactHelper:
 
     def edit_first(self, contact):
         wd = self.app.wd
+        wd.find_element_by_link_text("home").click()
         wd.find_element_by_css_selector("img[title=\"Edit\"]").click()
         wd.find_element_by_name("firstname").clear()
         wd.find_element_by_name("firstname").send_keys(contact.firstname)
