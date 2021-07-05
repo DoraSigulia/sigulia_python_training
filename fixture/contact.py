@@ -64,7 +64,8 @@ class ContactHelper:
 
     def return_home_page(self):
         wd = self.app.wd
-        wd.find_element_by_link_text("home page").click()
+        if not (wd.current_url.endswith("/addressbook/") and len(wd.find_elements_by_name("MainForm")) > 0):
+            wd.find_element_by_link_text("home page").click()
 
     def del_first_contact(self):
         wd = self.app.wd
