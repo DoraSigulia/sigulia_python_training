@@ -1,4 +1,5 @@
 from selenium.webdriver.support.ui import Select
+from model.contact import Contact_details
 
 class ContactHelper:
 
@@ -65,6 +66,7 @@ class ContactHelper:
         wd.find_element_by_name("selected[]").click()
         wd.find_element_by_css_selector("input[value=\"Delete\"]").click()
         wd.switch_to_alert().accept()
+        wd.find_element_by_css_selector('div.msgbox')
 
     def count(self):
         wd = self.app.wd
@@ -74,7 +76,18 @@ class ContactHelper:
     def modify_first_contact(self,new_contact_form):
         wd = self.app.wd
         self.open_contact_page()
+        wd.find_element_by_css_selector("img[title=\"Edit\"]")
         wd.find_element_by_css_selector("img[title=\"Edit\"]").click()
         self.fill_contact_form(new_contact_form)
         wd.find_element_by_xpath("(//input[@value='Update'])[2]").click()
         self.return_home_page()
+
+    def get_contact_list(self):
+        wd = self.app.wd
+        self.open_contact_page()
+        contacts = []
+        for element in wd.find_elements_by_name("entry"):
+            text = element.text
+            id = element.find_element_by_name("selected[]").get_attribute('value')
+            contacts.append(Contact_details(firstname=text, id=id))
+        return contacts
