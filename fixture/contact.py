@@ -49,14 +49,6 @@ class ContactHelper:
             wd.find_element_by_name(field_name).clear()
             wd.find_element_by_name(field_name).send_keys(text)
 
-    def edit_first(self, contact):
-        wd = self.app.wd
-        self.open_contact_page()
-        wd.find_element_by_css_selector("img[title=\"Edit\"]").click()
-        self.fill_contact_form(contact)
-        wd.find_element_by_xpath("(//input[@value='Update'])[2]").click()
-        self.return_home_page()
-
     def open_contact_page(self):
         wd = self.app.wd
         if not (wd.current_url.endswith("/addressbook/") and len(wd.find_elements_by_name("MainForm")) > 0):
@@ -83,8 +75,6 @@ class ContactHelper:
         wd = self.app.wd
         self.open_contact_page()
         wd.find_element_by_css_selector("img[title=\"Edit\"]").click()
-        # заполняем форму
         self.fill_contact_form(new_contact_form)
-        # сохраняем форму
         wd.find_element_by_xpath("(//input[@value='Update'])[2]").click()
         self.return_home_page()

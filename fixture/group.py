@@ -1,3 +1,5 @@
+from model.group import Group
+
 class GroupHelper:
 
     def __init__(self, app):
@@ -33,14 +35,6 @@ class GroupHelper:
             wd.find_element_by_name(field_name).clear()
             wd.find_element_by_name(field_name).send_keys(text)
 
-    def edit_first(self, group):
-        wd = self.app.wd
-        self.open_group_page()
-        wd.find_element_by_name("selected[]").click()
-        wd.find_element_by_name("edit").click()
-        self.fill_group_form(group)
-        wd.find_element_by_name("update").click()
-        self.return_to_group()
 
     def delete_first_group(self):
         wd = self.app.wd
@@ -58,11 +52,8 @@ class GroupHelper:
         wd = self.app.wd
         self.open_group_page()
         self.select_first_group()
-        #открываем форму
         wd.find_element_by_name("edit").click()
-        #заполняем форму
         self.fill_group_form(new_group_date)
-        #сохраняем форму
         wd.find_element_by_name("update").click()
         self.return_to_group()
 
@@ -70,3 +61,13 @@ class GroupHelper:
         wd = self.app.wd
         self.open_group_page()
         return len(wd.find_elements_by_name("selected[]"))
+
+    def get_group_list(self):
+        wd = self.app.wd
+        self.open_group_page()
+        groups = []
+        for element in wd.find_elements_by_css_selector("span.group"):
+            text = element.text
+            id = element.find_element_by_name("selected[]").get_attribute('value')
+            groups.append(Group(name=text, id=id))
+        return groups
