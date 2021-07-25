@@ -43,7 +43,6 @@ class GroupHelper:
         wd = self.app.wd
         self.open_group_page()
         self.select_group_by_index(index)
-        # удалить группу
         wd.find_element_by_name("delete").click()
         self.return_to_group()
         self.group_cache = None
