@@ -11,7 +11,7 @@ class ContactHelper:
         self.open_contact_page()
         wd.find_element_by_link_text("add new").click()
         self.fill_contact_form(contact)
-        wd.find_element_by_xpath("(//input[@value=\"Enter\"])[2]").click()
+        wd.find_element_by_xpath('(//input[@value="Enter"])[2]').click()
         self.return_home_page()
         self.contact_cache = None
 
@@ -68,7 +68,7 @@ class ContactHelper:
         wd = self.app.wd
         self.open_contact_page()
         self.select_contact_by_index(index)
-        wd.find_element_by_css_selector("input[value=\"Delete\"]").click()
+        wd.find_element_by_css_selector('input[value="Delete"]').click()
         wd.switch_to_alert().accept()
         wd.find_element_by_css_selector('div.msgbox')
         self.contact_cache = None
@@ -100,7 +100,7 @@ class ContactHelper:
 
     def select_modify_contact_by_index(self, index):
         wd = self.app.wd
-        wd.find_elements_by_css_selector("img[title=\"Edit\"]")[index].click()
+        wd.find_elements_by_css_selector('img[title="Edit"]')[index].click()
 
     contact_cache = None
 
@@ -110,8 +110,8 @@ class ContactHelper:
             self.open_contact_page()
             self.contact_cache = []
             for element in wd.find_elements_by_name("entry"):
-                firstname = element.find_element_by_css_selector("[name=\"entry\"] td:nth-child(2)").text
-                lastname = element.find_element_by_css_selector("[name=\"entry\"] td:nth-child(3)").text
+                firstname = element.find_element_by_css_selector('[name="entry"] td:nth-child(2)').text
+                lastname = element.find_element_by_css_selector('[name="entry"] td:nth-child(3)').text
                 id = element.find_element_by_name("selected[]").get_attribute('value')
                 self.contact_cache.append(Contact(firstname=firstname, lastname=lastname, id=id))
         return list(self.contact_cache)
