@@ -1,3 +1,5 @@
+import re
+
 from selenium.webdriver.support.ui import Select
 from model.contact import Contact
 
@@ -100,6 +102,7 @@ class ContactHelper:
 
     def select_modify_contact_by_index(self, index):
         wd = self.app.wd
+        self.open_contact_page()
         wd.find_elements_by_css_selector('img[title="Edit"]')[index].click()
 
     contact_cache = None
@@ -133,4 +136,20 @@ class ContactHelper:
         phone2 = wd.find_element_by_name("phone2").get_attribute("value")
         return Contact(firstname=firstname, lastname=lastname,id=id,
                        homephone=homephone, workphone=workphone,
+                       mobile=mobile,phone2=phone2)
+
+    def open_veiw_page_by_index(self, index):
+        wd = self.app.wd
+        self.open_contact_page()
+        wd.find_elements_by_css_selector('img[title="Details"]')[index].click()
+
+    def get_contact_from_veiw_page(self, index):
+        wd = self.app.wd
+        self.open_veiw_page_by_index(index)
+        text = wd.find_element_by_id("content").text
+        homephone = re.search("H: (.*)", text).group(1)
+        workphone = re.search("W: (.*)", text).group(1)
+        mobile = re.search("M: (.*)", text).group(1)
+        phone2 = re.search("P: (.*)", text).group(1)
+        return Contact(homephone=homephone, workphone=workphone,
                        mobile=mobile,phone2=phone2)
