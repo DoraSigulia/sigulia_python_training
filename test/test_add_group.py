@@ -4,12 +4,14 @@ import random
 import string
 
 def random_string(prefix, maxlen):
-    simvols = string.ascii_letters + string.digits + " "*10
+    simvols = string.ascii_letters + string.digits + string.punctuation + " "*10
     return prefix + "".join([random.choice(simvols) for i in range(random.randrange(maxlen))])
 
-teatdate = [Group(name="", header="", footer="")] + [
-    Group(name=random_string("name", 10), header=random_string("header", 10), footer=random_string("footer", 10))
-    for i in range(5)
+teatdate = [
+    Group(name=name, header=header, footer=footer)
+    for name in ["", random_string("name", 10)]
+    for header in ["", random_string("header", 10)]
+    for footer in ["", random_string("footer", 10)]
 ]
 
 @pytest.mark.parametrize("group", teatdate, ids=(repr(x) for x in teatdate))
